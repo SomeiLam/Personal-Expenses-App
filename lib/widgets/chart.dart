@@ -34,25 +34,27 @@ class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(groupedTransactionValues);
-    return Card(
-      elevation: 6,
-      margin: EdgeInsets.all(20),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: groupedTransactionValues.map((data) {
-            return Flexible(
-              fit: FlexFit.tight,
-              child: ChartBar(
-                data['day'],
-                data['amount'],
-                totalSpending == 0.0
-                    ? 0.0
-                    : (data['amount'] as double) / totalSpending,
-              ),
-            );
-          }).toList(),
+    return Container(
+      child: Card(
+        elevation: 6,
+        margin: EdgeInsets.all(20),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: groupedTransactionValues.map((data) {
+              return Flexible(
+                fit: FlexFit.tight,
+                child: ChartBar(
+                  data['day'],
+                  data['amount'],
+                  totalSpending == 0.0
+                      ? 0.0
+                      : (data['amount'] as double) / totalSpending,
+                ),
+              );
+            }).toList(),
+          ),
         ),
       ),
     );
